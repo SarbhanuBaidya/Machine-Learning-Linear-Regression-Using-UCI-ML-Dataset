@@ -16,16 +16,22 @@ import matplotlib.pyplot as pyplot
 from matplotlib import style
 import pickle
 
-data = pd.read_csv("/content/student_data/student-mat.csv", sep = ";")  #use the directory of your dataset
+data = pd.read_csv("/content/student_data/student-mat.csv", sep = ";")  # use the directory of your dataset
 
+# printing head for insights
 print(data.head())
 
-# the only data we need
+# the data fields we need
+# only the numerical values for regression
+# G1 -> Grade 1, G2 -> Grade 2, G3 -> Grade 3
+
 data = data[["G1", "G2", "G3", "studytime", "failures", "absences"]]
 
+# after trimming data
 print(data.head())
 
-#building the model to for Final Grades prediction i.e. G3 in the dataset.
+# building the model to for Final Grades prediction i.e. G3 in the dataset.
+# prediction of Grade 3 | var 'predict'
 predict = "G3"
 
 x = np.array(data.drop([predict], 1))
